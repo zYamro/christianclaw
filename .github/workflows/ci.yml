@@ -82,8 +82,10 @@ jobs:
     env:
       CI: "true"
       OPENCLAW_DISABLE_BUNDLED_PLUGIN_POSTINSTALL: "1"
-      # Cap workers for the 4 vCPU / 16 GB runner to avoid memory pressure.
-      OPENCLAW_VITEST_MAX_WORKERS: "4"
+      # Give V8 most of the 16 GB runner RAM and cap workers low to avoid the
+      # heap OOM that the full suite hits when many projects run in-process.
+      NODE_OPTIONS: "--max-old-space-size=8192"
+      OPENCLAW_VITEST_MAX_WORKERS: "2"
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
