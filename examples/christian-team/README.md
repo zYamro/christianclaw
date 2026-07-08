@@ -6,13 +6,13 @@ collaborate as one body, each with a virtue-shaped role, coordinated by the
 
 ## The team
 
-| Agent       | Role         | Verse                  | Responsibility                                  |
-| ----------- | ------------ | ---------------------- | ----------------------------------------------- |
-| 🛡️ Shepherd | Coordinator  | John 10:11             | Tends the team, guards values, delegates, replies |
-| 🔍 Seeker   | Researcher   | Matthew 7:7            | Research, reading, fact-finding, verification   |
-| 🔨 Craftsman| Builder      | Exodus 31:3            | Code, file ops, shell work, implementation      |
-| ⚖️ Discerner| Reviewer     | 1 Thessalonians 5:21   | Review, tests, security, risk surfacing          |
-| ✍️ Scribe   | Communicator | Ezra 7:10              | Docs, summaries, user-facing writing            |
+| Agent        | Role         | Verse                | Responsibility                                    |
+| ------------ | ------------ | -------------------- | ------------------------------------------------- |
+| 🛡️ Shepherd  | Coordinator  | John 10:11           | Tends the team, guards values, delegates, replies |
+| 🔍 Seeker    | Researcher   | Matthew 7:7          | Research, reading, fact-finding, verification     |
+| 🔨 Craftsman | Builder      | Exodus 31:3          | Code, file ops, shell work, implementation        |
+| ⚖️ Discerner | Reviewer     | 1 Thessalonians 5:21 | Review, tests, security, risk surfacing           |
+| ✍️ Scribe    | Communicator | Ezra 7:10            | Docs, summaries, user-facing writing              |
 
 The Shepherd runs with `subagents.delegationMode: "prefer"`, so it stays
 responsive and delegates non-trivial work to the right specialist through

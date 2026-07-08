@@ -5,8 +5,7 @@ const DEFAULT_TAGLINE = "Whatever you do, work at it with all your heart. — Co
 export type TaglineMode = "random" | "default" | "off";
 
 const HOLIDAY_TAGLINES = {
-  newYear:
-    "New Year: new mercies every morning—may your builds be steady and your branches kind.",
+  newYear: "New Year: new mercies every morning—may your builds be steady and your branches kind.",
   lunarNewYear:
     "Lunar New Year: may this year bring peace, prosperity, and reconciled merge conflicts.",
   christmas:
@@ -16,12 +15,9 @@ const HOLIDAY_TAGLINES = {
   easter: "Easter: Christ is risen—hope renewed, and so is this gateway.",
   hanukkah:
     "Hanukkah: a miracle of oil and endurance—may your gateway stay lit through every night.",
-  halloween:
-    "Autumn evening: no haunting here, just a quiet terminal and a faithful assistant.",
-  thanksgiving:
-    "Thanksgiving: give thanks for stable ports, kind teammates, and working DNS.",
-  valentines:
-    "Valentine's Day: love is patient, love is kind—and so is a well-documented API.",
+  halloween: "Autumn evening: no haunting here, just a quiet terminal and a faithful assistant.",
+  thanksgiving: "Thanksgiving: give thanks for stable ports, kind teammates, and working DNS.",
+  valentines: "Valentine's Day: love is patient, love is kind—and so is a well-documented API.",
 } as const;
 
 const TAGLINES: string[] = [

@@ -37,6 +37,12 @@ import {
   buildFullBootstrapPromptLines,
   buildLimitedBootstrapPromptLines,
 } from "./bootstrap-prompt.js";
+import {
+  buildChristianValuesSafetyLines,
+  buildChristianValuesSection,
+  CHRISTIAN_CLAW_IDENTITY_LINE,
+  CHRISTIAN_CLAW_VALUES_COMPACT_LINE,
+} from "./christian-values.js";
 import type { ResolvedTimeFormat } from "./date-time.js";
 import type { EmbeddedContextFile } from "./embedded-agent-helpers.js";
 import type {
@@ -57,12 +63,6 @@ import type {
   ProviderSystemPromptSectionId,
 } from "./system-prompt-contribution.js";
 import type { PromptMode, SilentReplyPromptMode } from "./system-prompt.types.js";
-import {
-  buildChristianValuesSafetyLines,
-  buildChristianValuesSection,
-  CHRISTIAN_CLAW_IDENTITY_LINE,
-  CHRISTIAN_CLAW_VALUES_COMPACT_LINE,
-} from "./christian-values.js";
 
 /**
  * Controls which hardcoded sections are included in the system prompt.
@@ -991,11 +991,7 @@ export function buildAgentSystemPrompt(params: {
 
   // For "none" mode, return just the basic identity line
   if (promptMode === "none") {
-    return [
-      CHRISTIAN_CLAW_IDENTITY_LINE,
-      CHRISTIAN_CLAW_VALUES_COMPACT_LINE,
-      modelIdentityLine,
-    ]
+    return [CHRISTIAN_CLAW_IDENTITY_LINE, CHRISTIAN_CLAW_VALUES_COMPACT_LINE, modelIdentityLine]
       .filter(Boolean)
       .join("\n");
   }

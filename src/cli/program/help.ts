@@ -122,7 +122,9 @@ export function configureProgramHelp(
   if (isRootVersionInvocation(process.argv)) {
     const commit = resolveCommitHash({ moduleUrl: import.meta.url });
     console.log(
-      commit ? `ChristianClaw ${ctx.programVersion} (${commit})` : `ChristianClaw ${ctx.programVersion}`,
+      commit
+        ? `ChristianClaw ${ctx.programVersion} (${commit})`
+        : `ChristianClaw ${ctx.programVersion}`,
     );
     process.exit(0);
   }

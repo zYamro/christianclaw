@@ -71,13 +71,13 @@ The default team is a flat roster of five agents coordinated by the Shepherd.
 It is config-only (no core hardcoding) and follows OpenClaw plugin-agnostic
 principles.
 
-| Agent | Role | Responsibility |
-| --- | --- | --- |
-| Shepherd | Coordinator | Tends the team, guards values, delegates, gives the final reply |
-| Seeker | Researcher | Research, reading, fact-finding, source verification |
-| Craftsman | Builder | Code, file operations, shell work, implementation |
-| Discerner | Reviewer | Review, tests, security, risk surfacing |
-| Scribe | Communicator | Docs, summaries, user-facing writing |
+| Agent     | Role         | Responsibility                                                  |
+| --------- | ------------ | --------------------------------------------------------------- |
+| Shepherd  | Coordinator  | Tends the team, guards values, delegates, gives the final reply |
+| Seeker    | Researcher   | Research, reading, fact-finding, source verification            |
+| Craftsman | Builder      | Code, file operations, shell work, implementation               |
+| Discerner | Reviewer     | Review, tests, security, risk surfacing                         |
+| Scribe    | Communicator | Docs, summaries, user-facing writing                            |
 
 The Shepherd runs with `subagents.delegationMode: "prefer"`, so it stays
 responsive and delegates non-trivial work to the right specialist through
