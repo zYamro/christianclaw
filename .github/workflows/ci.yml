@@ -28,7 +28,7 @@ jobs:
     env:
       OPENCLAW_DISABLE_BUNDLED_PLUGIN_POSTINSTALL: "1"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
@@ -45,7 +45,7 @@ jobs:
     env:
       OPENCLAW_DISABLE_BUNDLED_PLUGIN_POSTINSTALL: "1"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
@@ -62,7 +62,7 @@ jobs:
     env:
       OPENCLAW_DISABLE_BUNDLED_PLUGIN_POSTINSTALL: "1"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
@@ -81,7 +81,7 @@ jobs:
       # Cap workers for the 4 vCPU / 16 GB runner to avoid memory pressure.
       OPENCLAW_VITEST_MAX_WORKERS: "4"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
