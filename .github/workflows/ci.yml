@@ -1,0 +1,92 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+# ChristianClaw fork CI. Runs on standard GitHub-hosted runners (Linux Node 24,
+# the canonical CI environment). The upstream OpenClaw workflows depended on
+# Crabbox/Blacksmith/Testbox and live bot secrets that this fork does not have,
+# so this single workflow replaces them with a self-contained comprehensive
+# pipeline: install, typecheck (tsgo), lint + format, build, and the full
+# Vitest suite. Public repos get unlimited Linux minutes, so the full suite is
+# affordable here.
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Lint & format
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      OPENCLAW_DISABLE_BUNDLED_PLUGIN_POSTINSTALL: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm format:check
+      - run: pnpm lint
+
+  typecheck:
+    name: Typecheck (tsgo)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      OPENCLAW_DISABLE_BUNDLED_PLUGIN_POSTINSTALL: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm tsgo
+      - run: pnpm tsgo:test
+
+  build:
+    name: Build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      OPENCLAW_DISABLE_BUNDLED_PLUGIN_POSTINSTALL: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+
+  test:
+    name: Test (full Vitest suite)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    env:
+      CI: "true"
+      OPENCLAW_DISABLE_BUNDLED_PLUGIN_POSTINSTALL: "1"
+      # Cap workers for the 4 vCPU / 16 GB runner to avoid memory pressure.
+      OPENCLAW_VITEST_MAX_WORKERS: "4"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm test
